@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
+<meta name="Description" content="Covid-19 Information in Myanmar">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+        <title>Covid-19 Info</title>
+    </head>
+    <body>
+        <!--
+		api: https://corona.lmao.ninja/
+		endpoint: {
+			https://corona.lmao.ninja/all
+			https://corona.lmao.ninja/countries
+			https://corona.lmao.ninja/countries?sort={parameter}
+			https://corona.lmao.ninja/countries/{country-name}
+			https://corona.lmao.ninja/states
+			https://corona.lmao.ninja/jhucsse
+			https://corona.lmao.ninja/historical
+			https://corona.lmao.ninja/historical/{country-name}
+			https://corona.lmao.ninja/v2/historical
+			https://corona.lmao.ninja/v2/historical/{country-name}
+			https://corona.lmao.ninja/v2/jhucsse
+		}
+		source: https://github.com/NovelCOVID/API/
+	 --><!-- Our People matter
+		Myanmar:
+		Thailand:
+		Laos:
+		China:
+		Usa:
+	-->
+        <div class="card" style="width: 18rem; z-index: 99;">
+            <div class="card-body">
+                <div>
+                    <h5 class="card-title">Covid-19</h5>
+                    <img src="https://burmese.shannews.org/wp-content/uploads/2021/05/Shan-Logo-used-2018-1_Optimize.png" class="img-fluid float-right lazyload" alt="SHAN" style="width: 30%; margin-top: -2rem;" />
+                </div>
+                <br />
+                <h6 class="card-subtitle mb-2">Myanmar</h6>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2 style="color: #cd4621;" id="myanmar-total">0</h2>
+                    <span style="color: #cd4621;" id="myanmar-today">0</span>
+                </div>
+                <ul class="list-group">
+                    <li class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <svg class="bi bi-dot" width="3em" height="3em" viewBox="0 0 16 16" fill="rgb(244, 195, 99)" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" />
+                            </svg>
+                            Cases
+                        </div>
+                        <span class="badge badge-pill align-items-right" id="myanmar-active">0</span>
+                    </li>
+                    <li class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <svg class="bi bi-dot" width="3em" height="3em" viewBox="0 0 16 16" fill="green" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" />
+                            </svg>
+                            Recovered
+                        </div>
+                        <span class="badge badge-pill align-items-right" id="myanmar-recovered">0</span>
+                    </li>
+                    <li class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <svg class="bi bi-dot" width="3em" height="3em" viewBox="0 0 16 16" fill="gray" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" />
+                            </svg>
+                            Fatal
+                        </div>
+                        <span class="badge badge-pill align-items-right" id="myanmar-fatal">0</span>
+                    </li>
+ <a href="https://covid19.ttkz.me/" target="_blank" rel="noreferrer noopener" class="btn btn-info" >Covid-19 info in Myanmar</a>
+                </ul>
+
+            </div>
+            <hr style="border-color: rgba(36, 179, 30, 0.7); border-width: 0.5rem; border-radius: 10rem;" />
+            <h6 class="card-subtitle mb-2 text-muted" style="padding-left: 1rem;">WorldWide</h6>
+            <div class="accordion" id="worldwideCase">
+                <button
+                    type="button"
+                    class="list-group-item d-flex list-group-item-action justify-content-between align-items-center"
+                    data-toggle="collapse"
+                    data-target="#worldwideCollapse"
+                    aria-expanded="true"
+                    aria-controls="worldwideCollapse"
+                >
+                    <div class="align-items-center">WorldWide</div>
+                    <div>
+                        <span class="badge badge-pill worldwideCase" id="worldwide-totalCase">0</span> <span class="badge badge-pill" id="worldwide-today" style="background-color: #cd4621; color: #fff;">0</span>
+                        <svg class="bi bi-caret-down-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 01.753 1.659l-4.796 5.48a1 1 0 01-1.506 0z" />
+                        </svg>
+                    </div>
+                </button>
+                <div id="worldwideCollapse" class="collapse" aria-labelledby="headingOne" data-parent="#worldwideCase">
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <svg class="bi bi-dot" width="3em" height="3em" viewBox="0 0 16 16" fill="rgb(244, 195, 99)" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" />
+                                    </svg>
+                                    Cases
+                                </div>
+                                <span class="badge badge-pill align-items-right" id="worldwide-active">0</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <svg class="bi bi-dot" width="3em" height="3em" viewBox="0 0 16 16" fill="green" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" />
+                                    </svg>
+                                    Recovered
+                                </div>
+                                <span class="badge badge-pill align-items-right" id="worldwide-recovered">0</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <svg class="bi bi-dot" width="3em" height="3em" viewBox="0 0 16 16" fill="gray" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" />
+                                    </svg>
+                                    Fatal
+                                </div>
+                                <span class="badge badge-pill align-items-right" id="worldwide-fatal">0</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: rgba(36, 179, 30, 0.7); border-width: 0.5rem; border-radius: 10rem;" />
+            <ul class="list-group">
+                <div class="accordion" id="thailandCase">
+                    <button
+                        type="button"
+                        class="list-group-item d-flex list-group-item-action justify-content-between align-items-center"
+                        data-toggle="collapse"
+                        data-target="#thailandCollapse"
+                        aria-expanded="true"
+                        aria-controls="thailandCollapse"
+                    >
+                        Thailand
+                        <div>
+                            <span class="badge badge-pill thailandCase" id="thailand-total">0</span> <span class="badge badge-pill" id="thailand-today" style="background-color: #cd4621; color: #fff;">0</span>
+                            <svg class="bi bi-caret-down-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 01.753 1.659l-4.796 5.48a1 1 0 01-1.506 0z" />
+                            </svg>
+                        </div>
+                    </button>
+                    <div id="thailandCollapse" class="collapse" aria-labelledby="headingOne" data-parent="#thailandCase">
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <svg class="bi bi-dot" width="3em" height="3em" viewBox="0 0 16 16" fill="rgb(244, 195, 99)" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" />
+                                        </svg>
+                                        Cases
+                                    </div>
+                                    <span class="badge badge-pill align-items-right" id="thailand-active">0</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <svg class="bi bi-dot" width="3em" height="3em" viewBox="0 0 16 16" fill="green" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" />
+                                        </svg>
+                                        Recovered
+                                    </div>
+                                    <span class="badge badge-pill align-items-right" id="thailand-recovered">0</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <svg class="bi bi-dot" width="3em" height="3em" viewBox="0 0 16 16" fill="gray" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" />
+                                        </svg>
+                                        Fatal
+                                    </div>
+                                    <span class="badge badge-pill align-items-right" id="thailand-fatal">0</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion" id="chinaCase">
+                    <button
+                        type="button"
+                        class="list-group-item d-flex list-group-item-action justify-content-between align-items-center"
+                        data-toggle="collapse"
+                        data-target="#chinaCollapse"
+                        aria-expanded="true"
+                        aria-controls="chinaCollapse"
+                    >
+                        China
+                        <div>
+                            <span class="badge badge-pill chinaCase" id="china-total">0</span> <span class="badge badge-pill" id="china-today" style="background-color: #cd4621; color: #fff;">0</span>
+                            <svg class="bi bi-caret-down-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 01.753 1.659l-4.796 5.48a1 1 0 01-1.506 0z" />
+                            </svg>
+                        </div>
+                    </button>
+                    <div id="chinaCollapse" class="collapse" aria-labelledby="headingOne" data-parent="#chinaCase">
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <svg class="bi bi-dot" width="3em" height="3em" viewBox="0 0 16 16" fill="rgb(244, 195, 99)" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" />
+                                        </svg>
+                                        Cases
+                                    </div>
+                                    <span class="badge badge-pill align-items-right" id="china-active">0</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <svg class="bi bi-dot" width="3em" height="3em" viewBox="0 0 16 16" fill="green" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" />
+                                        </svg>
+                                        Recovered
+                                    </div>
+                                    <span class="badge badge-pill align-items-right" id="china-recovered">0</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <svg class="bi bi-dot" width="3em" height="3em" viewBox="0 0 16 16" fill="gray" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" />
+                                        </svg>
+                                        Fatal
+                                    </div>
+                                    <span class="badge badge-pill align-items-right" id="china-fatal">0</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion" id="usaCase">
+                    <button type="button" class="list-group-item d-flex list-group-item-action justify-content-between align-items-center" data-toggle="collapse" data-target="#usaCollapse" aria-expanded="true" aria-controls="usaCollapse">
+                        USA
+                        <div>
+                            <span class="badge badge-pill usaCase" id="usa-total">0</span> <span class="badge badge-pill" id="usa-today" style="background-color: #cd4621; color: #fff;">0</span>
+                            <svg class="bi bi-caret-down-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 01.753 1.659l-4.796 5.48a1 1 0 01-1.506 0z" />
+                            </svg>
+                        </div>
+                    </button>
+                    <div id="usaCollapse" class="collapse" aria-labelledby="headingOne" data-parent="#usaCase">
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <svg class="bi bi-dot" width="3em" height="3em" viewBox="0 0 16 16" fill="rgb(244, 195, 99)" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" />
+                                        </svg>
+                                        Cases
+                                    </div>
+                                    <span class="badge badge-pill align-items-right" id="usa-active">0</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <svg class="bi bi-dot" width="3em" height="3em" viewBox="0 0 16 16" fill="green" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" />
+                                        </svg>
+                                        Recovered
+                                    </div>
+                                    <span class="badge badge-pill align-items-right" id="usa-recovered">0</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <svg class="bi bi-dot" width="3em" height="3em" viewBox="0 0 16 16" fill="gray" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" />
+                                        </svg>
+                                        Fatal
+                                    </div>
+                                    <span class="badge badge-pill align-items-right" id="usa-fatal">0</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+<a class="btn btn-primary" href="https://covid19.who.int/" target="_blank" rel="noreferrer noopener">Covid-19 info. who.int</a>
+        </div>
+        <!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS --><!-- Cause jQuery problem on shannews.org website --><!-- <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <!-- axios Promise based HTTP client for the browser and node.js -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            const worldwideAPI = axios.get("https://corona.lmao.ninja/v2/all/");
+            const countriesAPI = axios.get("https://corona.lmao.ninja/v2/countries/");
+
+            function thousandsSeparators(n) {
+                return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+
+            axios.all([worldwideAPI, countriesAPI]).then(
+                axios.spread((...result) => {
+                    let worldwide = result[0].data;
+                    let countries = result[1].data;
+
+                    let chinaFilter = countries.filter((c) => c.country === "China");
+                    let myanmarFilter = countries.filter((c) => c.country === "Myanmar");
+                    let thailandFilter = countries.filter((c) => c.country === "Thailand");
+                    let usaFilter = countries.filter((c) => c.country === "USA");
+
+                    let china = chinaFilter[0];
+                    let myanmar = myanmarFilter[0];
+                    let thailand = thailandFilter[0];
+                    let usa = usaFilter[0];
+
+                    let worldwideTotal = document.getElementById("worldwide-totalCase");
+                    let worldwideActive = document.getElementById("worldwide-active");
+                    let worldwideRecovered = document.getElementById("worldwide-recovered");
+                    let worldwideFatal = document.getElementById("worldwide-fatal");
+                    let worldwideToday = document.getElementById("worldwide-today");
+
+                    worldwideTotal.innerHTML = thousandsSeparators(worldwide.cases);
+                    worldwideActive.innerHTML = thousandsSeparators(worldwide.active);
+                    worldwideRecovered.innerHTML = thousandsSeparators(worldwide.recovered);
+                    worldwideFatal.innerHTML = thousandsSeparators(worldwide.deaths);
+                    worldwideToday.innerHTML = "+" + thousandsSeparators(worldwide.todayCases);
+
+                    let usaTotal = document.getElementById("usa-total");
+                    let usaActive = document.getElementById("usa-active");
+                    let usaRecovered = document.getElementById("usa-recovered");
+                    let usaFatal = document.getElementById("usa-fatal");
+                    let usaToday = document.getElementById("usa-today");
+
+                    usaTotal.innerHTML = thousandsSeparators(usa.cases);
+                    usaActive.innerHTML = thousandsSeparators(usa.active);
+                    usaRecovered.innerHTML = thousandsSeparators(usa.recovered);
+                    usaFatal.innerHTML = thousandsSeparators(usa.deaths);
+                    usaToday.innerHTML = "+" + thousandsSeparators(usa.todayCases);
+
+                    let chinaTotal = document.getElementById("china-total");
+                    let chinaActive = document.getElementById("china-active");
+                    let chinaRecovered = document.getElementById("china-recovered");
+                    let chinaFatal = document.getElementById("china-fatal");
+                    let chinaToday = document.getElementById("china-today");
+
+                    chinaTotal.innerHTML = thousandsSeparators(china.cases);
+                    chinaActive.innerHTML = thousandsSeparators(china.active);
+                    chinaRecovered.innerHTML = thousandsSeparators(china.recovered);
+                    chinaFatal.innerHTML = thousandsSeparators(china.deaths);
+                    chinaToday.innerHTML = "+" + thousandsSeparators(china.todayCases);
+
+                    let myanmarTotal = document.getElementById("myanmar-total");
+                    let myanmarActive = document.getElementById("myanmar-active");
+                    let myanmarRecovered = document.getElementById("myanmar-recovered");
+                    let myanmarFatal = document.getElementById("myanmar-fatal");
+                    let myanmarToday = document.getElementById("myanmar-today");
+
+                    myanmarTotal.innerHTML = thousandsSeparators(myanmar.cases);
+                    myanmarActive.innerHTML = thousandsSeparators(myanmar.active);
+                    myanmarRecovered.innerHTML = thousandsSeparators(myanmar.recovered);
+                    myanmarFatal.innerHTML = thousandsSeparators(myanmar.deaths);
+                    myanmarToday.innerHTML = "+" + thousandsSeparators(myanmar.todayCases);
+
+                    let thailandTotal = document.getElementById("thailand-total");
+                    let thailandActive = document.getElementById("thailand-active");
+                    let thailandRecovered = document.getElementById("thailand-recovered");
+                    let thailandFatal = document.getElementById("thailand-fatal");
+                    let thailandToday = document.getElementById("thailand-today");
+
+                    thailandTotal.innerHTML = thousandsSeparators(thailand.cases);
+                    thailandActive.innerHTML = thousandsSeparators(thailand.active);
+                    thailandRecovered.innerHTML = thousandsSeparators(thailand.recovered);
+                    thailandFatal.innerHTML = thousandsSeparators(thailand.deaths);
+                    thailandToday.innerHTML = "+" + thousandsSeparators(thailand.todayCases);
+                })
+            );
+        </script>
+    </body>
+</html>
+
